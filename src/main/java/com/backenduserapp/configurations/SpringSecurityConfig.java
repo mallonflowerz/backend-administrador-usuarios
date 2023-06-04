@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.auth;
+package com.backenduserapp.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.backenduserapp.configurations.auth.filters.JwtAuthenticationFilter;
+import com.backenduserapp.configurations.auth.filters.JwtValidationFilter;
 
 import lombok.AllArgsConstructor;
 
@@ -39,6 +40,7 @@ public class SpringSecurityConfig {
                 .authenticated()
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authConfig.getAuthenticationManager()))
+                .addFilter(new JwtValidationFilter(authConfig.getAuthenticationManager()))
                 .csrf(config -> config.disable())
                 .sessionManagement(managment -> managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

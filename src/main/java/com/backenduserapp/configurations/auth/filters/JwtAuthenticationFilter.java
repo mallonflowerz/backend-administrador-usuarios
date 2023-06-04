@@ -1,7 +1,7 @@
 package com.backenduserapp.configurations.auth.filters;
 
 import java.io.IOException;
-import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +15,10 @@ import com.backenduserapp.models.entities.User;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.jsonwebtoken.Jwts;
+
+import static com.backenduserapp.configurations.auth.TokenJwtConfig.*;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -63,10 +67,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             final Authentication authResult) throws IOException, ServletException {
         final String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal())
                 .getUsername();
-        final String textOriginal = "algun_token_seguro_pa_todos." + username;
-        final String token = Base64.getEncoder().encodeToString(textOriginal.getBytes());
+        final String token = Jwts.builder()
+                .setSubject(username)
+                .signWith(SECRET_KEY)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 12 * 60 * 60 * 1000))
+                // .setExpiration(new Date(System.currentTimeMillis() + 12))
+                .compact();
 
-        response.addHeader("Authorization", "Bearer " + token);
+        response.addHeader(HEADER_AUTH, PREFIX_TOKEN + token);
 
         final Map<String, Object> body = new HashMap<>();
         body.put("token", token);
@@ -75,7 +84,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setStatus(200);
-        response.setContentType("application/json");
+        response.setContentType(APPLICATION_JSON);
     }
 
     @Override
@@ -87,7 +96,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setStatus(401);
-        response.setContentType("application/json");
+        response.setContentType(APPLICATION_JSON);
     }
 
 }
