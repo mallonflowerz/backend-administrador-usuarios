@@ -1,9 +1,9 @@
 package com.backenduserapp.configurations.auth.filters;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import static com.backenduserapp.configurations.auth.TokenJwtConfig.*;
+
+import com.backenduserapp.configurations.auth.SimpleGrantedAuthorityJsonCreate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Claims;
@@ -49,11 +51,13 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-
+            final Object authoritiesClaims = claims.get("authorities");
             final String username = claims.getSubject();
 
-            final List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            final Collection<? extends GrantedAuthority> authorities = Arrays
+            .asList(new ObjectMapper()
+            .addMixIn(SimpleGrantedAuthority.class, SimpleGrantedAuthorityJsonCreate.class)
+            .readValue(authoritiesClaims.toString().getBytes(), SimpleGrantedAuthority[].class));
 
             final UsernamePasswordAuthenticationToken u = new UsernamePasswordAuthenticationToken(username, null,
                     authorities);
