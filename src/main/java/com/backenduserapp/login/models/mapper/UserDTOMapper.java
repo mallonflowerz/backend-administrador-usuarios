@@ -1,7 +1,7 @@
-package com.backenduserapp.models.mapper;
+package com.backenduserapp.login.models.mapper;
 
-import com.backenduserapp.models.dto.UserDTO;
-import com.backenduserapp.models.entities.User;
+import com.backenduserapp.login.models.dto.UserDTO;
+import com.backenduserapp.login.models.entities.User;
 
 import lombok.NoArgsConstructor;
 

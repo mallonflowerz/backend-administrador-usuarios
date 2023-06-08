@@ -1,4 +1,4 @@
-package com.backenduserapp.models.entities;
+package com.backenduserapp.login.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,6 +1,6 @@
-package com.backenduserapp.models.dto;
+package com.backenduserapp.login.models.dto;
 
-import com.backenduserapp.models.IUser;
+import com.backenduserapp.login.models.IUser;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

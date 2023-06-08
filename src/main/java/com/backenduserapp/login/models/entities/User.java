@@ -1,11 +1,11 @@
-package com.backenduserapp.models.entities;
+package com.backenduserapp.login.models.entities;
 
 import java.util.List;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import com.backenduserapp.models.IUser;
+import com.backenduserapp.login.models.IUser;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

@@ -1,10 +1,10 @@
-package com.backenduserapp.services;
+package com.backenduserapp.login.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.backenduserapp.models.dto.UserDTO;
-import com.backenduserapp.models.entities.User;
+import com.backenduserapp.login.models.dto.UserDTO;
+import com.backenduserapp.login.models.entities.User;
 
 public interface UserServices {
     

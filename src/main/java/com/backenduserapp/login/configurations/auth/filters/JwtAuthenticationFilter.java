@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.auth.filters;
+package com.backenduserapp.login.configurations.auth.filters;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -13,7 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.backenduserapp.models.entities.User;
+import com.backenduserapp.login.models.entities.User;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-import static com.backenduserapp.configurations.auth.TokenJwtConfig.*;
+import static com.backenduserapp.login.configurations.auth.TokenJwtConfig.*;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

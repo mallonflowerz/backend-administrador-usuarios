@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations;
+package com.backenduserapp.login.configurations;
 
 import java.util.Arrays;
 
@@ -19,8 +19,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import com.backenduserapp.configurations.auth.filters.JwtAuthenticationFilter;
-import com.backenduserapp.configurations.auth.filters.JwtValidationFilter;
+import com.backenduserapp.login.configurations.auth.filters.JwtAuthenticationFilter;
+import com.backenduserapp.login.configurations.auth.filters.JwtValidationFilter;
 
 import lombok.AllArgsConstructor;
 

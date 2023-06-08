@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.auth.filters;
+package com.backenduserapp.login.configurations.auth.filters;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,9 +13,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import static com.backenduserapp.configurations.auth.TokenJwtConfig.*;
+import static com.backenduserapp.login.configurations.auth.TokenJwtConfig.*;
 
-import com.backenduserapp.configurations.auth.SimpleGrantedAuthorityJsonCreate;
+import com.backenduserapp.login.configurations.auth.SimpleGrantedAuthorityJsonCreate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Claims;

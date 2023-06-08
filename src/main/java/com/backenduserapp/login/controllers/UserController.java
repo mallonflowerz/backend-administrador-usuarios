@@ -1,4 +1,4 @@
-package com.backenduserapp.controllers;
+package com.backenduserapp.login.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backenduserapp.models.ChangePass;
-import com.backenduserapp.models.dto.UserDTO;
-import com.backenduserapp.models.entities.User;
-import com.backenduserapp.services.UserServices;
+import com.backenduserapp.login.models.ChangePass;
+import com.backenduserapp.login.models.dto.UserDTO;
+import com.backenduserapp.login.models.entities.User;
+import com.backenduserapp.login.services.UserServices;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.services;
+package com.backenduserapp.login.configurations.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backenduserapp.repositories.UserRepository;
+import com.backenduserapp.login.repositories.UserRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -26,11 +26,11 @@ public class JpaUserDetailsService implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<com.backenduserapp.models.entities.User> o = userRepository.findByUsername(username);
+        Optional<com.backenduserapp.login.models.entities.User> o = userRepository.findByUsername(username);
         if (!o.isPresent()) {
             throw new UsernameNotFoundException(String.format("%s no existe!", username));
         }
-        com.backenduserapp.models.entities.User user = o.orElseThrow();
+        com.backenduserapp.login.models.entities.User user = o.orElseThrow();
         List<GrantedAuthority> authorities = user.getRoles()
                 .stream()
                 .map(r -> new SimpleGrantedAuthority(r.getNameRole()))

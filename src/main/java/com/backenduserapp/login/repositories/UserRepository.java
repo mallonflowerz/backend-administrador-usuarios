@@ -1,8 +1,8 @@
-package com.backenduserapp.repositories;
+package com.backenduserapp.login.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.backenduserapp.models.entities.User;
+import com.backenduserapp.login.models.entities.User;
 import java.util.Optional;
 
 

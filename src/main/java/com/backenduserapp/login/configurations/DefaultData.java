@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations;
+package com.backenduserapp.login.configurations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backenduserapp.models.entities.Role;
-import com.backenduserapp.models.entities.User;
-import com.backenduserapp.repositories.RoleRepository;
-import com.backenduserapp.repositories.UserRepository;
+import com.backenduserapp.login.models.entities.*;
+import com.backenduserapp.login.repositories.RoleRepository;
+import com.backenduserapp.login.repositories.UserRepository;
 
 import lombok.AllArgsConstructor;
 

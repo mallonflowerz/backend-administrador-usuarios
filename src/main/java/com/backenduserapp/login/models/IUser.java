@@ -1,4 +1,4 @@
-package com.backenduserapp.models;
+package com.backenduserapp.login.models;
 
 public interface IUser {
     boolean isAdmin();

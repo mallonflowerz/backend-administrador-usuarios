@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.auth;
+package com.backenduserapp.login.configurations.auth;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

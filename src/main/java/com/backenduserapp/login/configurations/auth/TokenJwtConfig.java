@@ -1,4 +1,4 @@
-package com.backenduserapp.configurations.auth;
+package com.backenduserapp.login.configurations.auth;
 
 import java.security.Key;
 

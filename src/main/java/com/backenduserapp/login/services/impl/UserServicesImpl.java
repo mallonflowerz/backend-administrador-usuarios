@@ -1,4 +1,4 @@
-package com.backenduserapp.services.impl;
+package com.backenduserapp.login.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backenduserapp.models.IUser;
-import com.backenduserapp.models.dto.UserDTO;
-import com.backenduserapp.models.entities.Role;
-import com.backenduserapp.models.entities.User;
-import com.backenduserapp.models.mapper.UserDTOMapper;
-import com.backenduserapp.repositories.RoleRepository;
-import com.backenduserapp.repositories.UserRepository;
-import com.backenduserapp.services.UserServices;
+import com.backenduserapp.login.models.IUser;
+import com.backenduserapp.login.models.dto.UserDTO;
+import com.backenduserapp.login.models.entities.Role;
+import com.backenduserapp.login.models.entities.User;
+import com.backenduserapp.login.models.mapper.UserDTOMapper;
+import com.backenduserapp.login.repositories.RoleRepository;
+import com.backenduserapp.login.repositories.UserRepository;
+import com.backenduserapp.login.services.UserServices;
 
 import lombok.AllArgsConstructor;
 
