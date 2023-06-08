@@ -12,10 +12,14 @@ public interface UserServices {
 
     Optional<UserDTO> findById(Long id);
 
+    Optional<UserDTO> findByUsername(String username);
+
     UserDTO saveUser(User user);
 
     UserDTO updateUser(Long id, UserDTO user);
 
     void deleteUserById(Long id);
+
+    UserDTO changePassword(String username, String usernameNew, String password);
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backenduserapp.models.ChangePass;
 import com.backenduserapp.models.dto.UserDTO;
 import com.backenduserapp.models.entities.User;
 import com.backenduserapp.services.UserServices;
@@ -57,13 +58,26 @@ public class UserController {
         }
     }
 
+    @PutMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody ChangePass changePass) {
+        UserDTO user = userServices.changePassword(changePass.getUsername(),
+                changePass.getUsernameNew(),
+                changePass.getPassword());
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(user);
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@Valid @RequestBody UserDTO user, BindingResult result, @PathVariable Long id) {
         if (result.hasErrors()) {
             return validation(result);
         } else {
             UserDTO userDTO = userServices.updateUser(id, user);
-            if (userDTO != null){
+            if (userDTO != null) {
                 return ResponseEntity.status(HttpStatus.CREATED).body(userDTO);
             }
             return ResponseEntity.notFound().build();
