@@ -30,7 +30,6 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
 
     public JwtValidationFilter(final AuthenticationManager authenticationManager) {
         super(authenticationManager);
-
     }
 
     @Override
@@ -45,7 +44,6 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         final String token = header.replace(PREFIX_TOKEN, "");
 
         try {
-            
             final Claims claims = Jwts.parserBuilder()
                     .setSigningKey(SECRET_KEY)
                     .build()

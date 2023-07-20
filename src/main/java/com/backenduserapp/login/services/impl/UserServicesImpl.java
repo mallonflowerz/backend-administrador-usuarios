@@ -121,4 +121,19 @@ public class UserServicesImpl implements UserServices {
                 .build());
     }
 
+    @Override
+    @Transactional
+    public boolean logOut(String username) {
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if (userOptional.isPresent()){
+            if (userOptional.get().isActivo()) {
+                userOptional.get().setActivo(false);
+                userRepository.save(userOptional.get());
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
 }

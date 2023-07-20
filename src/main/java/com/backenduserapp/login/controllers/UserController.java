@@ -58,8 +58,20 @@ public class UserController {
         }
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logOut(@RequestBody String username){
+        boolean desactivado = userServices.logOut(username);
+        if (desactivado){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } 
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
     @PutMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@RequestBody ChangePass changePass) {
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePass changePass, BindingResult result) {
+        if (result.hasErrors()){
+            return validation(result);
+        }
         UserDTO user = userServices.changePassword(changePass.getUsername(),
                 changePass.getUsernameNew(),
                 changePass.getPassword());

@@ -22,4 +22,6 @@ public interface UserServices {
 
     UserDTO changePassword(String username, String usernameNew, String password);
 
+    boolean logOut(String username);
+
 }

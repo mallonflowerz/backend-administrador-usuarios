@@ -27,6 +27,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -37,6 +38,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
+    @Transactional
     public Authentication attemptAuthentication(final HttpServletRequest request, final HttpServletResponse response)
             throws AuthenticationException {
         User user = null;
@@ -69,13 +71,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             final FilterChain chain,
             final Authentication authResult) throws IOException, ServletException {
         final String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal())
-                .getUsername(); 
+                .getUsername();
         final Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
         final boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
         final Claims claims = Jwts.claims();
         claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
         claims.put("isAdmin", isAdmin);
-        
+
         final String token = Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
