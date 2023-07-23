@@ -1,5 +1,5 @@
 # backend-administrador-usuarios
-aplicacion web con Spring boot sobre el manejo de usuarios en la base de datos, inicio de sesion y registros con autenticacion y autorización.
+aplicacion web con Spring boot, Spring Security JWT y Spring Data JPA sobre el manejo de usuarios en la base de datos, inicio de sesion y registros con autenticacion y autorización.
 
 # requisitos
 - Java JDK +17 version 
